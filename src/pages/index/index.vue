@@ -1,17 +1,25 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view>
-			<text class="title">{{title}}</text>
-		</view>
+		<head-one></head-one>
+		<head-one></head-one>
+		<head-one></head-one>
+		<head-one></head-one>
+		<head-one></head-one>
+<!--		<view>-->
+<!--			<text class="title">{{title}}</text>-->
+<!--		</view>-->
 	</view>
 </template>
 
 <script>
+	import headOne from "../../components/headOne";
 	export default {
+		components: {
+			headOne //第二步，注册组件
+		},
 		data() {
 			return {
-				title: 'Hello'
+				title: '陆巡你没有马'
 			}
 		},
 		onLoad() {
@@ -23,20 +31,14 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.content {
 		text-align: center;
-		height: 400upx;
+		display: flex;
+		flex-wrap: wrap;
 	}
-
-	.logo {
-		height: 200upx;
-		width: 200upx;
-		margin-top: 200upx;
-	}
-
 	.title {
-		font-size: 36upx;
+		font-size: 36rpx;
 		color: #8f8f94;
 	}
 </style>
