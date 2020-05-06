@@ -1,6 +1,7 @@
 <template>
     <view class="icon">
         <img class="imgHead"  :src="src1" alt=""   mode="aspectFill" >
+        <input type="text" @click="getPic" value="'try me">
     </view>
 
 </template>
@@ -10,7 +11,28 @@
         name: "headOne",
         data(){
             return {
-                src1:'/static/5826（1）.png'
+                src1:'/static/5826.png',
+                src2: null,
+            }
+        },
+        methods:{
+            getPic(){
+                console.log(this + '外面');
+                let that = this;
+                wx.request({
+                    url: 'https://www.lovelivesupport.com/api.php/card/cn/info/1004', //仅为示例，并非真实的接口地址
+                    header: {
+                        'content-type': 'application/json' // 默认值
+                    },
+                    success (res) {
+                        console.log(res.data);
+                        console.log(res.data.response.card_nor_navi.unit_navi_asset);
+                        console.log(that + '里面');
+                        that.src2 = res.data.response.card_nor_navi.unit_navi_asset;
+                        console.log(that.src2);
+                    }
+                })
+                console.log('test getPic');
             }
         }
     }
