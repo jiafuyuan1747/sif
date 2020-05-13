@@ -12,13 +12,13 @@
         data(){
             return {
                 src1:'/static/5826.png',
-                src2: null,
+                src2: 'https://www.lovelivesupport.com/asset/',
             }
         },
         methods:{
             getPic(){
-                console.log(this + '外面');
                 let that = this;
+                console.log(this + '外面');
                 wx.request({
                     url: 'https://www.lovelivesupport.com/api.php/card/cn/info/1004', //仅为示例，并非真实的接口地址
                     header: {
@@ -27,11 +27,10 @@
                     success (res) {
                         console.log(res.data);
                         console.log(res.data.response.card_nor_navi.unit_navi_asset);
-                        console.log(that + '里面');
-                        that.src2 = res.data.response.card_nor_navi.unit_navi_asset;
-                        console.log(that.src2);
+                        const urlSec = res.data.response.card_nor_navi.unit_navi_asset;
+                        that.src1 = 'https://images.weserv.nl/?url=' + that.src2 + urlSec;
                     }
-                })
+                });
                 console.log('test getPic');
             }
         }
